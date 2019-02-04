@@ -4,9 +4,9 @@ import * as THREE from "three";
 export default class Camera {
 
     constructor() {
-        this.camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 10);
-        this.camera.position.z = 1.5;
-        this.camera.position.y = 1;
+        this.camera = new THREE.PerspectiveCamera(50, 500 / 400, 0.1, 1000);
+        this.camera.position.z = 80;
+        this.camera.position.y = 40;
         this.camera.rotation.set(-0.5, 0, 0);
     }
 

@@ -19,7 +19,7 @@ function init() {
     document.body.appendChild(renderer.domElement);
 
 }
-//test
+
 function animate() {
 
     requestAnimationFrame(animate);

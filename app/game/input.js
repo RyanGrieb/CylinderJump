@@ -12,16 +12,16 @@ export default class Input {
     handleInput() {
         for (var i = 0; i < this.heldKeys.length; i++) {
             if (this.heldKeys[i] === "a") {
-                this.velocity.x = -0.05;
+                this.velocity.x = -0.15;
             }
             if (this.heldKeys[i] === "d") {
-                this.velocity.x = 0.05;
+                this.velocity.x = 0.15;
             }
             if (this.heldKeys[i] === "w") {
-                this.velocity.z = -0.05;
+                this.velocity.z = -0.5;
             }
             if (this.heldKeys[i] === "s") {
-                this.velocity.z = 0.05;
+                this.velocity.z = 0.5;
             }
 
             if (this.heldKeys[i] === "q") {
@@ -70,6 +70,6 @@ export default class Input {
 
     update() {
         this.handleInput();
-        game.gameInstance.camera.handleInput(this.velocity);
+        game.gameInstance.handlePlatformSpin(this.velocity);
     }
 }

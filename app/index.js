@@ -8,6 +8,12 @@ var camera, scene, renderer;
 var geometry, material, mesh;
 export default game;
 
+
+//Fps limiter varaibles
+let clock = new THREE.Clock();
+let delta = 0;
+let interval = 1 / 60;
+
 init();
 animate();
 
@@ -27,5 +33,10 @@ function animate() {
     //mesh.rotation.x += 0.01;
     //mesh.rotation.y += 0.02;
     renderer.render(game.gameInstance.scene, game.gameInstance.camera.camera);
-    game.gameInstance.update();
+
+    delta += clock.getDelta();
+    if (delta > interval) {
+        game.gameInstance.update();
+        delta = delta % interval;
+    }
 }

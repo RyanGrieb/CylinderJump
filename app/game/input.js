@@ -9,7 +9,7 @@ export default class Input {
         this.velocity = { x: 0, z: 0, rotation: 0 };
     }
 
-    handleInput() {
+    handleKeyInput() {
         for (var i = 0; i < this.heldKeys.length; i++) {
             if (this.heldKeys[i] === "a") {
                 this.velocity.x = -0.15;
@@ -69,7 +69,8 @@ export default class Input {
     }
 
     update() {
-        this.handleInput();
+        this.handleKeyInput();
+
         game.gameInstance.handlePlatformSpin(this.velocity);
     }
 }

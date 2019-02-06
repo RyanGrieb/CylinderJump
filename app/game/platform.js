@@ -25,7 +25,7 @@ export default class Platform {
         bMaterial.side = THREE.DoubleSide;
 
         this.mesh = new THREE.Mesh(bGeom, bMaterial);
-        //this.mesh.rotation.y = (Math.random() * (Math.PI * 2 - 0 + 1) + 0); //6.28319 is 360 in radians.
+        this.mesh.rotation.y = (Math.random() * (Math.PI * 2 - 0 + 1) + 0); //6.28319 is 360 in radians.
         this.mesh.position.set(this.x, this.y, this.z);
         game.gameInstance.scene.add(this.mesh);
     }

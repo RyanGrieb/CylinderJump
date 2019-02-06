@@ -62,6 +62,7 @@ export default class Ball {
             this.currentPlatform = { platform: game.gameInstance.findNextPlatformFrom(this.currentPlatform.platform), index: index };
             //console.log(this.mesh.position.y + "," + this.currentPlatform.platform.mesh.position.y + "|" + this.currentPlatform.index);
             game.gameInstance.camera.moveDown();
+            game.gameInstance.scoreText.setScore(game.gameInstance.scoreText.score + 10);
         }
     }
 

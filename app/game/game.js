@@ -5,6 +5,7 @@ import Input from "./input";
 import Ball from "./ball";
 import Platform from "./platform";
 import Cylinder from "./cylinder";
+import ScoreText from "./scoretext";
 
 export default class Game {
 
@@ -34,6 +35,7 @@ export default class Game {
         this.platforms = [];
         this.ball = new Ball(0, 25, 10);
         this.camera = new Camera();
+        this.scoreText = new ScoreText();
 
         this.generatePlatforms(0, 4);
         this.ball.currentPlatform = { platform: this.platforms[0], index: 0 };
@@ -120,7 +122,9 @@ export default class Game {
         document.getElementById("respawnButton").addEventListener("click", () => {
             this.handleRespawn();
         });
+    }
 
+    handleRespawn() {
         for (var i = 0; i < this.platforms.length; i++) {
             this.platforms[i].kill();
         }
@@ -130,9 +134,7 @@ export default class Game {
             this.cylinders[i].kill();
         }
         this.cylinders = [];
-    }
 
-    handleRespawn() {
         var element = document.getElementById("respawnText");
         element.parentNode.removeChild(element);
 
@@ -149,6 +151,7 @@ export default class Game {
 
         this.cylinders.push(new Cylinder(0, 120, 0));
         this.cylinders.push(new Cylinder(0, -120, 0));
+        this.scoreText.setScore(0);
         this.ball.dead = false;
     }
 

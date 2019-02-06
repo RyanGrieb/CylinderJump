@@ -27,7 +27,8 @@ export default class Game {
         //Create test platform
 
         this.cylinders = [];
-        this.cylinders.push(new Cylinder(0, -60, 0));
+        this.cylinders.push(new Cylinder(0, 120, 0));
+        this.cylinders.push(new Cylinder(0, -120, 0));
 
         this.totalPlatformsMade = 0;
         this.platforms = [];
@@ -51,6 +52,7 @@ export default class Game {
         //3 == last platform
         if (this.ball.currentPlatform.index >= (this.totalPlatformsMade - 2)) {
             this.generatePlatforms(-60 * (this.totalPlatformsMade), 2);
+            this.cylinders.push(new Cylinder(0, -60 * (this.totalPlatformsMade), 0));
         }
     }
 
@@ -65,6 +67,13 @@ export default class Game {
         for (let i = 0; i < this.platforms.length; i++) {
             if (this.platforms[i] === platform)
                 this.platforms.splice(i, 1);
+        }
+    }
+
+    removeCylinder(cylinder) {
+        for (let i = 0; i < this.cylinders.length; i++) {
+            if (this.cylinders[i] === cylinder)
+                this.cylinders.splice(i, 1);
         }
     }
 
@@ -116,6 +125,11 @@ export default class Game {
             this.platforms[i].kill();
         }
         this.platforms = [];
+
+        for (var i = 0; i < this.cylinders.length; i++) {
+            this.cylinders[i].kill();
+        }
+        this.cylinders = [];
     }
 
     handleRespawn() {
@@ -133,6 +147,8 @@ export default class Game {
         this.ball.verticalSpeed = 2;
         this.ball.currentPlatform = { platform: this.platforms[0], index: 0 };
 
+        this.cylinders.push(new Cylinder(0, 120, 0));
+        this.cylinders.push(new Cylinder(0, -120, 0));
         this.ball.dead = false;
     }
 
@@ -164,5 +180,12 @@ export default class Game {
         this.generateFuturePlatforms();
 
         this.ball.update();
+
+
+        for (let i = 0; i < this.platforms.length; i++)
+            this.platforms[i].update();
+        for (let i = 0; i < this.cylinders.length; i++)
+            this.cylinders[i].update();
+
     }
 }

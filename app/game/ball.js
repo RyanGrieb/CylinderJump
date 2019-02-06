@@ -66,7 +66,6 @@ export default class Ball {
     }
 
     update() {
-        console.log(Math.round(this.mesh.position.y));
         this.checkCollision();
         this.checkPlatformPass();
 

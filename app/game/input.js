@@ -70,7 +70,5 @@ export default class Input {
 
     update() {
         this.handleKeyInput();
-
-        game.gameInstance.handlePlatformSpin(this.velocity);
     }
 }
